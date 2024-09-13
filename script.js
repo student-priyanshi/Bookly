@@ -76,22 +76,100 @@ window.onload = () => {
     } else {
         document.querySelector('.header .header-2').classList.remove('active');
     }
+    
 };
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
-    var swiper = new Swiper('.featured-slider', {
-        slidesPerView: 3,
-        spaceBetween: 10,
+    var swiper = new Swiper(".featured-slider", {
+        loop: false, // Disable loop mode if there are not enough slides
+        slidesPerView: 5, // Adjust according to your needs
+        spaceBetween: 30,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: ".swiper-pagination",
             clickable: true,
         },
         scrollbar: {
-            el: '.swiper-scrollbar',
+            el: ".swiper-scrollbar",
+            draggable: true,
         },
     });
 });
+
+var swiper = new Swiper(".arrivals-slider", {
+    loop: true, // Enable loop for smoother navigation
+    spaceBetween: 30,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+    },
+    breakpoints: {
+        320: { slidesPerView: 1 }, // Mobile devices
+        640: { slidesPerView: 2 }, // Small tablets
+        768: { slidesPerView: 3 }, // Medium devices
+        1024: { slidesPerView: 5 }, // Large devices
+    },
+});
+
+var swiper = new Swiper(".reviews-slider", {
+    loop: true, // Enable loop for smoother navigation
+    spaceBetween: 30,
+    grabCursor:true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+    },
+    breakpoints: {
+        320: { slidesPerView: 1 }, // Mobile devices
+        640: { slidesPerView: 2 }, // Small tablets
+        768: { slidesPerView: 3 }, // Medium devices
+        1024: { slidesPerView: 5 }, // Large devices
+    },
+});
+
+var swiper = new Swiper(".blogs-slider", {
+    loop: true, // Enable loop for smoother navigation
+    spaceBetween: 30,
+    grabCursor:true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+    },
+    breakpoints: {
+        320: { slidesPerView: 1 }, // Mobile devices
+        640: { slidesPerView: 2 }, // Small tablets
+        768: { slidesPerView: 3 }, // Medium devices
+        1024: { slidesPerView: 5 }, // Large devices
+    },
+});
+
+

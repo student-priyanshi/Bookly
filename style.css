@@ -336,14 +336,6 @@ section{
     font-size: 1.5rem;
 }
 
-/* Swiper slide styles */
-.swiper-slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* Add any additional styles for swiper slides here */
-}
 
 .swiper-slide .book-details {
     text-align: center;
@@ -366,14 +358,6 @@ section{
     color: var(--green);
 }
 
-/* Navigation buttons */
-.swiper-button-prev, .swiper-button-next {
-    color: #000; /* Adjust color as needed */
-}
-
-.swiper-pagination-bullet {
-    background: #000; /* Adjust color as needed */
-}
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -528,13 +512,13 @@ body {
 }
 
 .featured-slider {
-    width: 100%;
-    height: 500px; /* Adjust height as needed */
+    width: 100rem;
+    height: 550px; /* Adjust heigas needed */
 }
 
 .featured .featured-slider .box{
-    width: 25rem;
-    margin: 2rem 0;
+    width: 35rem;
+    margin: 1rem 0;
     position: relative;
     overflow: hidden;
     border: var(--border);
@@ -547,6 +531,7 @@ body {
 
 .featured .featured-slider .box .image{
     padding: 1rem;
+    margin-bottom: 20px;
     background: linear-gradient(15deg,#eee 30%,#fff 30.1%);
 }
 
@@ -556,7 +541,7 @@ body {
 
 .featured .featured-slider .box .image img{
     height: 25rem; /* Ensure the image height is consistent */
-    width: 25rem; /* Ensure the image width is consistent */
+    width: fit-content; /* Ensure the image width is consistent */
     object-fit: cover;
 }
 
@@ -611,16 +596,288 @@ body {
     text-decoration: line-through;
 }
 
+.swiper-button-prev, .swiper-button-next {
+    color: #333; /* Adjust the color if it's not visible */
+    font-size: 24px; /* Adjust size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5); /* Background for better visibility */
+    border-radius: 50%; /* Optional, for rounded buttons */
+}
 
+.swiper-button-prev:hover, .swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+}
 
+.newsletter{
+    background: url(back.jpeg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
+.newsletter form{
+    max-width: 45rem;
+    margin-left: auto;
+    text-align: center;
+    padding: 5rem 0;
+}
 
+.newsletter form h3{
+    font-size: 2.2rem;
+    color: #fff;
+    padding-bottom: .7rem 0;
+    font-weight: normal;
+}
 
+.newsletter form .box{
+    width: 100%;
+    margin: .7rem 0;
+    padding: 1rem 1.2rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    border-radius: .5rem;
+    text-transform: none;
+}
 
+.arrivals-slider {
+    width: 100rem;
+    height: 500px; /* Adjust heigas needed */
+}
 
+.arrivals  .arrivals-slider .box{
+    width: 35rem;
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+    border: var(--border);
+    text-align: center;
+}
 
+.arrivals  .arrivals-slider .box:hover{
+    border: var(--border-hover);
+}
 
+.arrivals  .arrivals-slider .box .image{
+    padding: 1rem;
+    margin-bottom: 20px;
+    background: linear-gradient(15deg,#eee 30%,#fff 30.1%);
+}
 
+.arrivals  .arrivals-slider .box:hover .image{
+    transform: translateY(6rem);
+}
+
+.arrivals  .arrivals-slider .box .image img{
+    height: 25rem; /* Ensure the image height is consistent */
+    width: fit-content; /* Ensure the image width is consistent */
+    object-fit: cover;
+}
+
+.arrivals  .arrivals-slider .box .icons{
+    padding-bottom: var(--border-hover);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 1;
+    transform: translateY(-100%);
+
+}
+
+.arrivals  .arrivals-slider .box:hover .icons{
+    transform: translateY(0%);
+
+}
+
+.arrivals  .arrivals-slider .box .icons a{
+    color: var(--black);
+    font-size: 2.2rem;
+    padding: 1.2rem 1.5rem;
+
+}
+.arrivals  .arrivals-slider .box .icons a:hover{
+    background: var(--green);
+    color: #fff;
+}
+
+.arrivals  .arrivals-slider .box .content{
+    background: #eee;
+    padding: 1.5rem;
+}
+
+ .box .content h3{
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.arrivals  .arrivals-slider .box .content .price{
+    font-size: 2.2rem;
+    color: var(--black);
+    padding-top: 1rem;
+}
+
+.arrivals  .arrivals-slider .box .content .price span{
+    font-size: 1.5rem;
+    color: var(--light-color);
+    text-decoration: line-through;
+}
+
+.deal {
+    background: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures items are aligned properly */
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.deal .content {
+    flex: 1 1 42rem; /* Adjust the size of the content area */
+}
+
+.deal .image {
+    flex: 1 1 42rem; /* Adjust the size of the image area */
+    text-align: right; /* Align the image to the right side */
+}
+
+.deal .image img {
+    width: 70%;
+    height: 400px;
+}
+
+.deal .content h3{
+    color: var(--green);
+    font-size: 2.5rem;
+    padding-bottom: .5rem;
+}
+
+.deal .content h1{
+    color: var(--black);
+    font-size: 4rem;
+}
+
+.deal .content p{
+    padding: 1rem 0;
+    color: var(--light-color);
+    font-size: 1.4rem;
+    line-height: 2;
+}
+
+.reviews .reviews-slider .box{
+    width: 30px;
+    height: 350px;
+    border: var(--border);
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.reviews .reviews-slider .box:hover{
+    border: var(--border-hover);
+}
+
+.reviews .reviews-slider .box img{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviews .reviews-slider .box h3{
+    color: var(--black);
+    font-size: 2.2rem;
+    padding: .5rem 0;
+}
+
+.reviews .reviews-slider .box p{
+    color: var(--light-color);
+    font-size: 1.4rem;
+    padding: 1rem 0;
+    line-height: 2;
+}
+
+.reviews .reviews-slider .box .stars i{
+    font-size: 1.7rem;
+    color: var(--green);
+}
+
+.blogs .blogs-slider .box{
+    margin: 2rem 0;
+    height: 700px;
+    width: 30px;
+    border: var(--border);
+}
+
+.blogs .blogs-slider .box:hover{
+    border: var(--border-hover);
+}
+
+.blogs .blogs-slider .box .image{
+    height: 25rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.blogs .blogs-slider .box .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.blogs .blogs-slider .box:hover .image img{
+    transform: scale(1.1);
+}
+
+.blogs .blogs-slider .box .content{
+    padding: 1.5rem;
+}
+
+.blogs .blogs-slider .box .content h3{
+    font-size: 2.2rem;
+    color: var(--black);
+    padding-bottom: .5rem;
+}
+
+.blogs .blogs-slider .box .content p{
+    font-size: 1.4rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+    line-height: 2;
+}
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    gap: 1.5rem;
+}
+
+.footer .box-container .box h3{
+    font-size: 2.2rem;
+    color: var(--black);
+    padding: 1rem 0;
+
+}
+
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.4rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box a i{
+    color: var(--green);
+    padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover i{
+   padding-right: 2rem;
+}
 
 
 
@@ -675,7 +932,14 @@ body {
 
     }
 
-    
+    .newsletter{
+        background-position: right;
+    }
+
+    .newsletter form{
+        margin-left: 0;
+        max-width: 100%;
+    }
 
     .modal-content {
         flex-direction: column; /* Stack image and details vertically */
