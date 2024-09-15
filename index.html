@@ -58,21 +58,53 @@
     </nav>
 
 <!--Login Form-->
-<div class="login-form-container">
+<div class="form-container" id="login-form" style="display: none;"> <!-- Initially hidden -->
     <div id="close-login-btn" class="fas fa-times"></div>
     <form action="">
         <h3>sign in</h3>
         <span>username</span>
-        <input type="email" name="" class="box" placeholder="enter your email " id="">
+        <input type="email" class="box" placeholder="enter your email">
         <span>password</span>
-        <input type="password" name="" class="box"  placeholder="enter your password " id="">
+        <input type="password" class="box" placeholder="enter your password">
         <div class="checkbox">
-            <input type="checkbox" name="" id="remeber-me">
-            <label for="remeber-me">remeber me</label>
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">remember me</label>
         </div>
         <input type="submit" value="sign in" class="btn">
-        <p>forget password ?<a href="#">click here</a></p>
-        <p>don't have an account ?<a href="#">create one</a></p>
+        <p>forgot password? <a href="#" id="forgot-password-link">click here</a></p>
+        <p>don't have an account? <a href="#" id="create-account-link">create one</a></p>
+    </form>
+</div>
+
+<!-- Sign Up Form -->
+<div class="form-container" id="signup-form" style="display: none;">
+    <div id="close-signup-btn" class="fas fa-times"></div>
+    <form action="">
+        <h3>sign up</h3>
+        <span>email</span>
+        <input type="email" class="box" placeholder="enter your email">
+        <span>password</span>
+        <input type="password" class="box" placeholder="enter your password">
+        <span>confirm password</span>
+        <input type="password" class="box" placeholder="confirm your password">
+        <input type="submit" value="sign up" class="btn">
+        <p>already have an account? <a href="#" id="login-link">login here</a></p>
+    </form>
+</div>
+
+<!-- Forgot Password Form -->
+<div class="form-container" id="forgot-password-form" style="display: none;">
+    <div id="close-forgot-password-btn" class="fas fa-times"></div>
+    <form action="">
+        <h3>forgot password</h3>
+        <span>email</span>
+        <input type="email" class="box" placeholder="enter your email">
+        <span>new password</span>
+        <input type="password" class="box" placeholder="enter new password">
+        <span>confirm new password</span>
+        <input type="password" class="box" placeholder="confirm new password">
+        <input type="submit" value="reset password" class="btn">
+        <p>remembered password? <a href="#" id="login-link-from-forgot">login here</a></p>
     </form>
 </div>
 
