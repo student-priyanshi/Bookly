@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookly</title>
     
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -17,19 +18,23 @@
 <body>
     <!--header section start-->
     <header class="header"> 
-        <div class="header-1">
-            <a href="#" class="logo"> <i class="fas fa-book"></i>Bookly</a>
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="search here..." id="search-box">
-                <label for="search-box" class="fas fa-search"></label>
-            </form>
-            <div class="icons">
-                <div id="search-btn" class="fas fa-search"></div>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <div id="login-btn" class="fas fa-user"></div>
-            </div>
+    <div class="header-1">
+        <a href="#" class="logo"> <i class="fas fa-book"></i>Bookly</a>
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="search here..." id="search-box" autocomplete="off">
+            <label for="search-box" class="fas fa-search"></label>
+            <ul id="suggestions" class="suggestions-list"></ul> <!-- For displaying suggestions -->
+        </form>
+        <div class="icons">
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+            <span class="like-count">0</span>
+            <a href="#" class="fas fa-shopping-cart" id="cart-icon">
+                <span id="cart-count">0</span>
+            </a>
+            <div id="login-btn" class="fas fa-user"></div>
         </div>
+    </div>
 
         <div class="header-2">
             <nav class="navbar">
@@ -152,7 +157,7 @@
             <p id="book-price"></p>
             <p id="book-summary"></p>
             <div id="book-reviews"></div>
-            <button id="add-to-cart-btn" class="btn">Add to Cart</button>
+            <button id="add-to-cart-btn" class="btn add-to-cart">Add to Cart</button>
             <button id="buy-now-btn" class="btn">Buy Now</button>
         </div>
     </div>
@@ -166,7 +171,8 @@
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('The Goose Girl', 'well loved tales', 'img/b13.jpg', '$9', 'The Goose Girl by Shannon Hale is a fantasy novel about a princess who must disguise herself as a goose girl after being betrayed and usurped. As she struggles to reclaim her rightful place, she discovers her own strength and courage.')"></a>
                 </div>
                 <div class="image">
@@ -175,13 +181,14 @@
                 <div class="content">
                     <h3>The Goose Girl</h3>
                     <div class="price"><span>$9</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('The Goose Girl', 'well loved tales', 'img/b13.jpg', '$9', 'The Goose Girl by Shannon Hale is a fantasy novel about a princess who must disguise herself as a goose girl after being betrayed and usurped. As she struggles to reclaim her rightful place, she discovers her own strength and courage.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('The Goose Girl', 'well loved tales', 'img/b13.jpg', '$9', 'The Goose Girl by Shannon Hale is a fantasy novel about a princess who must disguise herself as a goose girl after being betrayed and usurped. As she struggles to reclaim her rightful place, she discovers her own strength and courage.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Murder at the happy home for the Aged', 'Bulbul sharma', 'img/b14.jpg', '$7', 'Murder at the Happy Home for the Aged is a mystery novel featuring a murder investigation set in a retirement home.')"></a>
                 </div>
                 <div class="image">
@@ -190,13 +197,14 @@
                 <div class="content">
                     <h3>Murder at the happy home for the Aged</h3>
                     <div class="price"><span>$7</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Murder at the happy home for the Aged', 'Bulbul sharma', 'img/b14.jpg', '$7', 'Murder at the Happy Home for the Aged is a mystery novel featuring a murder investigation set in a retirement home.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Murder at the happy home for the Aged', 'Bulbul sharma', 'img/b14.jpg', '$7', 'Murder at the Happy Home for the Aged is a mystery novel featuring a murder investigation set in a retirement home.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Treasure Island', 'Robert Louis Stevenson', 'img/b16.jpg', '$10', 'Treasure Island by Robert Louis Stevenson is a classic adventure novel about young Jim Hawkins quest for buried treasure.')"></a>
                 </div>
                 <div class="image">
@@ -205,13 +213,14 @@
                 <div class="content">
                     <h3>Treasure Island</h3>
                     <div class="price"><span>$10</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Treasure Island', 'Robert Louis Stevenson', 'img/b16.jpg', '$10', 'Treasure Island by Robert Louis Stevenson is a classic adventure novel about young Jim Hawkins quest for buried treasure.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Treasure Island', 'Robert Louis Stevenson', 'img/b16.jpg', '$10', 'Treasure Island by Robert Louis Stevenson is a classic adventure novel about young Jim Hawkins quest for buried treasure.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Pilgrimage', 'IRA Singh', 'img/b25.jpg', '$16', 'Pilgrimage by Annie Ernaux is a reflective memoir about the authors journey of self-discovery and personal growth through travel and experiences.')"></a>
                 </div>
                 <div class="image">
@@ -220,13 +229,14 @@
                 <div class="content">
                     <h3>Pilgrimage</h3>
                     <div class="price"><span>$16</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Pilgrimage', 'IRA Singh', 'img/b25.jpg', '$16', 'Pilgrimage by Annie Ernaux is a reflective memoir about the authors journey of self-discovery and personal growth through travel and experiences.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Pilgrimage', 'IRA Singh', 'img/b25.jpg', '$16', 'Pilgrimage by Annie Ernaux is a reflective memoir about the authors journey of self-discovery and personal growth through travel and experiences.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Catherin Cookson', 'Tilly Trotter Windowed', 'img/b26.jpg', '$7', 'Catherine Cookson is a collection of novels by the renowned author Catherine Cookson, known for her compelling stories of romance and hardship set in early 20th-century England')"></a>
                 </div>
                 <div class="image">
@@ -235,13 +245,14 @@
                 <div class="content">
                     <h3>Catherin Cookson</h3>
                     <div class="price"><span>$7</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Catherin Cookson', 'Tilly Trotter Windowed', 'img/b26.jpg', '$7', 'Catherine Cookson is a collection of novels by the renowned author Catherine Cookson, known for her compelling stories of romance and hardship set in early 20th-century England')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Catherin Cookson', 'Tilly Trotter Windowed', 'img/b26.jpg', '$7', 'Catherine Cookson is a collection of novels by the renowned author Catherine Cookson, known for her compelling stories of romance and hardship set in early 20th-century England')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Erase The Ego', 'Sri Ramana Maharshi', 'img/b19.jpg', '$13', 'Erase the Ego explores the journey of self-discovery and personal growth by challenging and overcoming one’s ego. The book provides insights and practical advice for achieving a more fulfilled and authentic life.')"></a>
                 </div>
                 <div class="image">
@@ -250,13 +261,14 @@
                 <div class="content">
                     <h3>Erase The Ego</h3>
                     <div class="price"><span>$13</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Erase The Ego', 'Sri Ramana Maharshi', 'img/b19.jpg', '$13', 'Erase the Ego explores the journey of self-discovery and personal growth by challenging and overcoming one’s ego. The book provides insights and practical advice for achieving a more fulfilled and authentic life.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Erase The Ego', 'Sri Ramana Maharshi', 'img/b19.jpg', '$13', 'Erase the Ego explores the journey of self-discovery and personal growth by challenging and overcoming one’s ego. The book provides insights and practical advice for achieving a more fulfilled and authentic life.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('PackUp Your Troubles', 'Anne Bennett', 'img/b40.jpg', '$6.29', 'Pack Up Your Troubles by Pam Weaver follows Connie and Eva two women from feuding families who become close friends during their nurses training despite their families bitter past.')"></a>
                 </div>
                 <div class="image">
@@ -265,13 +277,14 @@
                 <div class="content">
                     <h3>PackUp Your Troubles</h3>
                     <div class="price"><span>$6.29</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('PackUp Your Troubles', 'Anne Bennett', 'img/b40.jpg', '$6.29', 'Pack Up Your Troubles by Pam Weaver follows Connie and Eva two women from feuding families who become close friends during their nurses training despite their families bitter past.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('PackUp Your Troubles', 'Anne Bennett', 'img/b40.jpg', '$6.29', 'Pack Up Your Troubles by Pam Weaver follows Connie and Eva two women from feuding families who become close friends during their nurses training despite their families bitter past.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Harry and the Wrinklies', 'Alan Temperley', 'img/b21.jpg', '$4.99', 'Harry and the Wrinklies follows young Harry as he moves in with his seemingly boring aunts, only to discover they lead an exciting double life as a crime-fighting gang. The story is filled with fun, adventure, and heartwarming moments.')"></a>
                 </div>
                 <div class="image">
@@ -280,13 +293,14 @@
                 <div class="content">
                     <h3>Harry and the Wrinklies</h3>
                     <div class="price"><span>$4.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Harry and the Wrinklies', 'Alan Temperley', 'img/b21.jpg', '$4.99', 'Harry and the Wrinklies follows young Harry as he moves in with his seemingly boring aunts, only to discover they lead an exciting double life as a crime-fighting gang. The story is filled with fun, adventure, and heartwarming moments.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Harry and the Wrinklies', 'Alan Temperley', 'img/b21.jpg', '$4.99', 'Harry and the Wrinklies follows young Harry as he moves in with his seemingly boring aunts, only to discover they lead an exciting double life as a crime-fighting gang. The story is filled with fun, adventure, and heartwarming moments.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Naishapur and Babylon', 'Keki N.Daruwall', 'img/b22.jpg', '$7.99', 'Naishapur and Babylon by Joyce Carol Oates is a compelling novella that explores the themes of obsession, desire, and the complexities of human relationships.')"></a>
                 </div>
                 <div class="image">
@@ -295,13 +309,14 @@
                 <div class="content">
                     <h3>Naishapur and Babylon</h3>
                     <div class="price"><span>$7.99 </span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Naishapur and Babylon', 'Keki N.Daruwall', 'img/b22.jpg', '$7.99', 'Naishapur and Babylon by Joyce Carol Oates is a compelling novella that explores the themes of obsession, desire, and the complexities of human relationships.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Naishapur and Babylon', 'Keki N.Daruwall', 'img/b22.jpg', '$7.99', 'Naishapur and Babylon by Joyce Carol Oates is a compelling novella that explores the themes of obsession, desire, and the complexities of human relationships.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('The Tilburry Poppies', 'Sue Wilsher', 'img/b23.jpg', '$4.99', 'The Tilbury Poppies by Sue Wilsher is a historical novel set during World War I. It follows the lives of women in the working-class town of Tilbury, England, who take on factory jobs to support the war effort.')"></a>
                 </div>
                 <div class="image">
@@ -310,15 +325,14 @@
                 <div class="content">
                     <h3>The Tilburry Poppies</h3>
                     <div class="price"><span>$4.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('The Tilburry Poppies', 'Sue Wilsher', 'img/b23.jpg', '$4.99', 'The Tilbury Poppies by Sue Wilsher is a historical novel set during World War I. It follows the lives of women in the working-class town of Tilbury, England, who take on factory jobs to support the war effort.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('The Tilburry Poppies', 'Sue Wilsher', 'img/b23.jpg', '$4.99', 'The Tilbury Poppies by Sue Wilsher is a historical novel set during World War I. It follows the lives of women in the working-class town of Tilbury, England, who take on factory jobs to support the war effort.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <div class="price"><span>$3.99</span></div>
-                    <div class="price"><span>$3.99</span></div>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Twice upon a time', 'Payal Kapadia', 'img/b24.jpg', '$3.99 ', 'Twice Upon a Time by James Norcliffe is a fantasy novel that follows the adventures of a boy named Vincent, who finds himself in a parallel world where magic exists, and everything seems strangely familiar yet different')"></a>
                 </div>
                 <div class="image">
@@ -327,7 +341,7 @@
                 <div class="content">
                     <h3>Twice upon a time</h3>
                     <div class="price"><span>$3.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Twice upon a time', 'Payal Kapadia', 'img/b24.jpg', '$3.99 ', 'Twice Upon a Time by James Norcliffe is a fantasy novel that follows the adventures of a boy named Vincent, who finds himself in a parallel world where magic exists, and everything seems strangely familiar yet different')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Twice upon a time', 'Payal Kapadia', 'img/b24.jpg', '$3.99 ', 'Twice Upon a Time by James Norcliffe is a fantasy novel that follows the adventures of a boy named Vincent, who finds himself in a parallel world where magic exists, and everything seems strangely familiar yet different')">add to cart</a>
                 </div>
             </div>
             
@@ -360,7 +374,8 @@
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('East End Angel', 'Carol River', 'img/b43.jpg', '$4.99 ', 'East End Angel by Carol Rivers is a heartwarming historical novel set in Londons East End during World War II.  As Pearl grows stronger amidst the hardships.')"></a>
                 </div>
                 <div class="image">
@@ -369,13 +384,14 @@
                 <div class="content">
                     <h3>East End Angel</h3>
                     <div class="price"><span>$4.99 </span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('East End Angel', 'Carol River', 'img/b43.jpg', '$4.99 ', 'East End Angel by Carol Rivers is a heartwarming historical novel set in Londons East End during World War II.  As Pearl grows stronger amidst the hardships.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('East End Angel', 'Carol River', 'img/b43.jpg', '$4.99 ', 'East End Angel by Carol Rivers is a heartwarming historical novel set in Londons East End during World War II.  As Pearl grows stronger amidst the hardships.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('No Greater Love', 'Danielle Steel', 'img/b50.jpg', ' $4.99', 'No Greater Love by Danielle Steel is a dramatic tale of love, loss, and resilience. It centers around Edwina Winfield, who survives the Titanic disaster but loses her parents and fiancé.')"></a>
                 </div>
                 <div class="image">
@@ -384,13 +400,14 @@
                 <div class="content">
                     <h3>No Greater Love</h3>
                     <div class="price"><span> $4.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('No Greater Love', 'Danielle Steel', 'img/b50.jpg', ' $4.99', 'No Greater Love by Danielle Steel is a dramatic tale of love, loss, and resilience. It centers around Edwina Winfield, who survives the Titanic disaster but loses her parents and fiancé.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('No Greater Love', 'Danielle Steel', 'img/b50.jpg', ' $4.99', 'No Greater Love by Danielle Steel is a dramatic tale of love, loss, and resilience. It centers around Edwina Winfield, who survives the Titanic disaster but loses her parents and fiancé.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('The Appeal', 'John Grisham', 'img/b51.jpg', '$7.99', 'The Appeal by John Grisham is a legal thriller that delves into the corrupt world of corporate influence on the judicial system. The story follows a chemical company guilty of dumping toxic waste, leading to a massive lawsuit')"></a>
                 </div>
                 <div class="image">
@@ -399,13 +416,14 @@
                 <div class="content">
                     <h3>The Appeal</h3>
                     <div class="price"><span>$7.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('The Appeal', 'John Grisham', 'img/b51.jpg', '$7.99', 'The Appeal by John Grisham is a legal thriller that delves into the corrupt world of corporate influence on the judicial system. The story follows a chemical company guilty of dumping toxic waste, leading to a massive lawsuit')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('The Appeal', 'John Grisham', 'img/b51.jpg', '$7.99', 'The Appeal by John Grisham is a legal thriller that delves into the corrupt world of corporate influence on the judicial system. The story follows a chemical company guilty of dumping toxic waste, leading to a massive lawsuit')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Beach Party', 'R.L Stine', 'img/b52.jpg', '$5.99', 'Beach Party by R.L. Stine is a teen thriller from the Fear Street series. The story follows Karen, who joins a group of friends for a summer of fun at the beach. ')"></a>
                 </div>
                 <div class="image">
@@ -414,13 +432,14 @@
                 <div class="content">
                     <h3>Beach Party</h3>
                     <div class="price"><span>$5.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Beach Party', 'R.L Stine', 'img/b52.jpg', '$5.99', 'Beach Party by R.L. Stine is a teen thriller from the Fear Street series. The story follows Karen, who joins a group of friends for a summer of fun at the beach. ')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Beach Party', 'R.L Stine', 'img/b52.jpg', '$5.99', 'Beach Party by R.L. Stine is a teen thriller from the Fear Street series. The story follows Karen, who joins a group of friends for a summer of fun at the beach. ')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Love in Another Town', 'Barbara Taylor Bradford', 'img/b54.jpg', '$$4.99', 'Love in Another Town by Mary Higgins Clark is a romantic suspense novel about a young woman named Lacey who discovers a series of letters revealing a past romance involving her family.')"></a>
                 </div>
                 <div class="image">
@@ -429,13 +448,14 @@
                 <div class="content">
                     <h3>Love in Another Town</h3>
                     <div class="price"><span>$4.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Love in Another Town', 'Barbara Taylor Bradford', 'img/b54.jpg', '$4.99', 'Love in Another Town by Mary Higgins Clark is a romantic suspense novel about a young woman named Lacey who discovers a series of letters revealing a past romance involving her family.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Love in Another Town', 'Barbara Taylor Bradford', 'img/b54.jpg', '$4.99', 'Love in Another Town by Mary Higgins Clark is a romantic suspense novel about a young woman named Lacey who discovers a series of letters revealing a past romance involving her family.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Juniors', 'Dr.B.R.Kishore', 'img/b35.jpg', '$3.99', 'Juniors by K.A. Applegate is a young adult novel that explores the lives of high school students navigating the complexities of adolescence.')"></a>
                 </div>
                 <div class="image">
@@ -444,13 +464,14 @@
                 <div class="content">
                     <h3>Juniors</h3>
                     <div class="price"><span>$3.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Juniors', 'Dr.B.R.Kishore', 'img/b35.jpg', '$3.99', 'Juniors by K.A. Applegate is a young adult novel that explores the lives of high school students navigating the complexities of adolescence.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Juniors', 'Dr.B.R.Kishore', 'img/b35.jpg', '$3.99', 'Juniors by K.A. Applegate is a young adult novel that explores the lives of high school students navigating the complexities of adolescence.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('The Daevinci Code', 'Dan Brown', 'img/b56.jpg', '$8.99', 'The Da Vinci Code by Dan Brown is a bestselling thriller that follows Robert Langdon, a Harvard symbologist, and Sophie Neveu, a French cryptologist, as they unravel a series of clues related to a murder in the Louvre. ')"></a>
                 </div>
                 <div class="image">
@@ -459,13 +480,14 @@
                 <div class="content">
                     <h3>The Daevinci Code</h3>
                     <div class="price"><span>$8.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('The Daevinci Code', 'Dan Brown', 'img/b56.jpg', '$8.99', 'The Da Vinci Code by Dan Brown is a bestselling thriller that follows Robert Langdon, a Harvard symbologist, and Sophie Neveu, a French cryptologist, as they unravel a series of clues related to a murder in the Louvre. ')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('The Daevinci Code', 'Dan Brown', 'img/b56.jpg', '$8.99', 'The Da Vinci Code by Dan Brown is a bestselling thriller that follows Robert Langdon, a Harvard symbologist, and Sophie Neveu, a French cryptologist, as they unravel a series of clues related to a murder in the Louvre. ')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('The edge of Reason', 'Bridget Jones', 'img/b37.jpg', '$4.99', 'The Edge of Reason by Helen Fielding is a sequel to Bridget Jones Diary. It continues the humorous and relatable journey of Bridget Jones as she navigates the ups and downs of her love life, career, and personal growth.')"></a>
                 </div>
                 <div class="image">
@@ -474,13 +496,14 @@
                 <div class="content">
                     <h3>The edge of Reason</h3>
                     <div class="price"><span>$4.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('The edge of Reason', 'Bridget Jones', 'img/b37.jpg', '$4.99', 'The Edge of Reason by Helen Fielding is a sequel to Bridget Jones Diary. It continues the humorous and relatable journey of Bridget Jones as she navigates the ups and downs of her love life, career, and personal growth.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('The edge of Reason', 'Bridget Jones', 'img/b37.jpg', '$4.99', 'The Edge of Reason by Helen Fielding is a sequel to Bridget Jones Diary. It continues the humorous and relatable journey of Bridget Jones as she navigates the ups and downs of her love life, career, and personal growth.')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Catherine Cookson', 'Tilly Trotter Windowed', 'img/b38.jpg', '$6.99', 'Catherine Cookson wrote numerous novels, so I’d need to know the specific title to provide a precise summary. However, her books often focus on themes of social struggle, romance, and personal resilience set in historical or working-class settings')"></a>
                 </div>
                 <div class="image">
@@ -489,13 +512,14 @@
                 <div class="content">
                     <h3>Catherine Cookson</h3>
                     <div class="price"><span>$6.99</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Catherine Cookson', 'Tilly Trotter Windowed', 'img/b38.jpg', '$6.99', 'Catherine Cookson wrote numerous novels, so I’d need to know the specific title to provide a precise summary. However, her books often focus on themes of social struggle, romance, and personal resilience set in historical or working-class settings')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Catherine Cookson', 'Tilly Trotter Windowed', 'img/b38.jpg', '$6.99', 'Catherine Cookson wrote numerous novels, so I’d need to know the specific title to provide a precise summary. However, her books often focus on themes of social struggle, romance, and personal resilience set in historical or working-class settings')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('A Christmas Cracker', 'Trisha Ashley', 'img/b39.jpg', '$4', 'A Christmas Cracker is a festive novel by the renowned author, whose charming storytelling focuses on the holiday seasons magic and cheer. ')"></a>
                 </div>
                 <div class="image">
@@ -504,13 +528,14 @@
                 <div class="content">
                     <h3>A Christmas Cracker</h3>
                     <div class="price"><span>$4</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('A Christmas Cracker', 'Trisha Ashley', 'img/b39.jpg', '$4', 'A Christmas Cracker is a festive novel by the renowned author, whose charming storytelling focuses on the holiday seasons magic and cheer. ')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('A Christmas Cracker', 'Trisha Ashley', 'img/b39.jpg', '$4', 'A Christmas Cracker is a festive novel by the renowned author, whose charming storytelling focuses on the holiday seasons magic and cheer. ')">add to cart</a>
                 </div>
             </div>
             <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-heart" onclick="toggleLike(this)"></a>
+                    <span class="like-count">0</span>
                     <a href="#" class="fas fa-eye" onclick="showBookDetails('Pack up your Troubles', 'Anne Bennett', 'img/b40.jpg', '$5', 'Pack Up Your Troubles is a novel set during World War II, focusing on the lives of characters affected by the war. The story often highlights themes of resilience, camaraderie, and personal struggles as people cope with the challenges of wartime.')"></a>
                 </div>
                 <div class="image">
@@ -519,7 +544,7 @@
                 <div class="content">
                     <h3>Pack up your Troubles</h3>
                     <div class="price"><span>$5</span></div>
-                    <a href="#" class="btn" onclick="showBookDetails('Pack up your Troubles', 'Anne Bennett', 'img/b40.jpg', '$5', 'Pack Up Your Troubles is a novel set during World War II, focusing on the lives of characters affected by the war. The story often highlights themes of resilience, camaraderie, and personal struggles as people cope with the challenges of wartime.')">add to cart</a>
+                    <a href="#" class="btn add-to-cart" onclick="showBookDetails('Pack up your Troubles', 'Anne Bennett', 'img/b40.jpg', '$5', 'Pack Up Your Troubles is a novel set during World War II, focusing on the lives of characters affected by the war. The story often highlights themes of resilience, camaraderie, and personal struggles as people cope with the challenges of wartime.')">add to cart</a>
                 </div>
             </div>
             

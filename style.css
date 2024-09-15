@@ -121,6 +121,27 @@ header .header-1 .icons a:hover {
     color: var(--green);
 }
 
+.suggestions-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    border: 1px solid #ccc;
+    display: none; /* Hide suggestions initially */
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
 #search-btn {
     display: none;
 }
@@ -595,6 +616,17 @@ body {
     color: var(--light-color);
     text-decoration: line-through;
 }
+
+.fas.fa-heart {
+    color: grey; /* Default color */
+}
+
+.fas.fa-heart.liked {
+    color: red !important; /* Force the color to change */
+}
+
+
+
 
 .swiper-button-prev, .swiper-button-next {
     color: #333; /* Adjust the color if it's not visible */

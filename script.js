@@ -1,3 +1,103 @@
+const books = [
+    "Let The Snog Fest Begin",
+    "The Captains Treasure",
+    "Lizzie of Langley Street",
+    "The Goose Girl",
+    "Murder at the happy home for the Aged",
+    "Treasure Island",
+    "Pilgrimage",
+    "Catherin Cookson",
+    "Erase The Ego",
+    "PackUp Your Troubles",
+    "Harry and the Wrinklies",
+    "Naishapur and Babylon",
+    "The Tilburry Poppies",
+    "Twice upon a time",
+    "East End Angel",
+    "No Greater Love",
+    "The Appeal",
+    "Beach Party",
+    "Love in Another Town",
+    "Juniors",
+    "The Daevinci Code",
+    "The edge of Reason",
+    "Catherine Cookson",
+    "A Christmas Cracker",
+    "Pack up your Troubles",
+];
+
+const searchBox = document.getElementById('search-box');
+const suggestionsList = document.getElementById('suggestions');
+
+searchBox.addEventListener('input', function() {
+    const query = searchBox.value.toLowerCase();
+    const suggestions = books.filter(book => book.toLowerCase().includes(query));
+
+    // Display suggestions
+    suggestionsList.innerHTML = '';
+    if (suggestions.length > 0 && query !== '') {
+        suggestions.forEach(suggestion => {
+            const li = document.createElement('li');
+            li.textContent = suggestion;
+            li.addEventListener('click', function() {
+                searchBox.value = suggestion;
+                suggestionsList.innerHTML = '';
+            });
+            suggestionsList.appendChild(li);
+        });
+        suggestionsList.style.display = 'block';
+    } else {
+        suggestionsList.style.display = 'none';
+    }
+});
+
+// Hide suggestions list when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.search-form')) {
+        suggestionsList.style.display = 'none';
+    }
+});
+
+function toggleLike(heartIcon) {
+    // Log the current heart state
+    console.log("Heart clicked", heartIcon);
+
+    // Toggle the 'liked' class
+    heartIcon.classList.toggle('liked');
+    console.log("Liked class added?", heartIcon.classList.contains('liked'));
+
+    // Like count logic
+    let likeCountElement = heartIcon.nextElementSibling;
+    let currentCount = parseInt(likeCountElement.innerText);
+    
+    if (heartIcon.classList.contains('liked')) {
+        likeCountElement.innerText = currentCount + 1;
+    } else {
+        likeCountElement.innerText = currentCount - 1;
+    }
+}
+
+// Function to update cart count and icon color
+function updateCartCount() {
+    const cartCountElement = document.getElementById('cart-count');
+    const cartIconElement = document.querySelector('.cart-icon');
+    let currentCount = parseInt(cartCountElement.textContent, 10);
+    
+    // Increase count
+    cartCountElement.textContent = currentCount + 1;
+    
+    // Check if the count is greater than zero
+    if (currentCount + 1 > 0) {
+      cartIconElement.classList.add('has-items');
+    }
+  }
+  
+  // Event listener for 'Add to Cart' buttons
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', updateCartCount);
+  });
+  
+
 function showBookDetails(title, author, image, price, summary) {
     // Set the book details in the modal
     document.getElementById('book-title').innerText = title;
