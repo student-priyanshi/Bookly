@@ -52,14 +52,6 @@ document.querySelector('#search-btn').onclick = () => {
     searchForm.classList.toggle('active');
 };
 
-let loginForm = document.querySelector('.login-form-container');
-document.querySelector('#login-btn').onclick = () => {
-    loginForm.classList.toggle('active');
-};
-
-document.querySelector('#close-login-btn').onclick = () => {
-    loginForm.classList.toggle('active');
-};
 
 window.onscroll = () => {
     searchForm.classList.remove('active');
@@ -170,6 +162,54 @@ var swiper = new Swiper(".blogs-slider", {
         768: { slidesPerView: 3 }, // Medium devices
         1024: { slidesPerView: 5 }, // Large devices
     },
+});
+
+// Get form elements
+let loginForm = document.getElementById('login-form');
+let signupForm = document.getElementById('signup-form');
+let forgotPasswordForm = document.getElementById('forgot-password-form');
+
+// Open Sign Up form
+document.getElementById('create-account-link').onclick = function() {
+    loginForm.style.display = 'none';
+    signupForm.style.display = 'flex';
+};
+
+// Open Forgot Password form
+document.getElementById('forgot-password-link').onclick = function() {
+    loginForm.style.display = 'none';
+    forgotPasswordForm.style.display = 'flex';
+};
+
+// Back to Login from Sign Up
+document.getElementById('login-link').onclick = function() {
+    signupForm.style.display = 'none';
+    loginForm.style.display = 'flex';
+};
+
+// Back to Login from Forgot Password
+document.getElementById('login-link-from-forgot').onclick = function() {
+    forgotPasswordForm.style.display = 'none';
+    loginForm.style.display = 'flex';
+};
+
+// Close buttons functionality
+document.getElementById('close-login-btn').onclick = function() {
+    loginForm.style.display = 'none';
+};
+
+document.getElementById('close-signup-btn').onclick = function() {
+    signupForm.style.display = 'none';
+};
+
+document.getElementById('close-forgot-password-btn').onclick = function() {
+    forgotPasswordForm.style.display = 'none';
+};
+
+// When the profile icon is clicked, show the login form
+const loginBtn = document.getElementById('login-btn');
+loginBtn.addEventListener('click', () => {
+    loginForm.style.display = 'block'; // Show login form
 });
 
 
