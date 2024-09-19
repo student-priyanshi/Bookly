@@ -313,3 +313,143 @@ loginBtn.addEventListener('click', () => {
 });
 
 
+
+let cart = []; // Array to store cart items
+
+// Function to add a book to the cart
+function addToCart(book) {
+    const existingBook = cart.find(item => item.title === book.title);
+    
+    if (existingBook) {
+        existingBook.quantity++;
+    } else {
+        cart.push({...book, quantity: 1});
+    }
+    
+    updateCartUI();
+}
+
+// Function to remove a book from the cart
+function removeFromCart(title) {
+    cart = cart.filter(item => item.title !== title);
+    updateCartUI();
+}
+
+// Function to update the cart UI and calculate the total
+function updateCartUI() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = '';
+    
+    let totalPrice = 0;
+    
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        totalPrice += subtotal;
+
+        cartItems.innerHTML += `
+            <tr>
+                <td><img src="${item.image}" alt="${item.title}" width="50"></td>
+                <td>${item.title}</td>
+                <td>$${item.price}</td>
+                <td>
+                    <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.title}', this.value)">
+                </td>
+                <td>$${subtotal.toFixed(2)}</td>
+                <td><button onclick="removeFromCart('${item.title}')">Remove</button></td>
+            </tr>
+        `;
+    });
+    
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+
+    // Update the cart count in the cart icon
+    document.getElementById('cart-count').textContent = cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+// Function to update the quantity of a book
+function updateQuantity(title, quantity) {
+    const book = cart.find(item => item.title === title);
+    if (book) {
+        book.quantity = parseInt(quantity);
+    }
+    updateCartUI();
+}
+
+// Function to show the book details in the modal
+function showBookDetails(title, author, image, price, summary) {
+    document.getElementById('book-title').textContent = title;
+    document.getElementById('book-author').textContent = author;
+    document.getElementById('book-image').src = image;
+    document.getElementById('book-price').textContent = price;
+    document.getElementById('book-summary').textContent = summary;
+
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    addToCartBtn.onclick = function() {
+        addToCart({
+            title: title,
+            price: parseFloat(price.replace('$', '')),
+            image: image
+        });
+    };
+
+    // Show the modal
+    document.getElementById('book-details-modal').style.display = 'block';
+}
+
+// Function to hide the modal
+document.getElementById('close-modal-btn').addEventListener('click', function() {
+    document.getElementById('book-details-modal').style.display = 'none';
+});
+
+// Show the cart when the cart icon is clicked
+document.getElementById('cart-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('cart').style.display = 'block';
+});
+
+// Hide the cart when the close button is clicked
+document.getElementById('close-cart-btn').addEventListener('click', function() {
+    document.getElementById('cart').style.display = 'none';
+});
+
+
+
+// Function to show the cart overlay when the cart icon is clicked
+document.getElementById('cart-icon').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default action of the anchor tag
+
+    // Show the cart overlay
+    const cartOverlay = document.getElementById('cart-overlay');
+    cartOverlay.style.display = 'flex'; // Use flex to center the cart content
+});
+
+// Function to hide the cart overlay when the close button (X) is clicked
+document.getElementById('close-cart-btn').addEventListener('click', function() {
+    const cartOverlay = document.getElementById('cart-overlay');
+
+    // Hide the cart overlay
+    cartOverlay.style.display = 'none';
+});
+
+
+document.getElementById('proceed-to-payment').addEventListener('click', function() {
+    window.location.href = 'BOOKLY/pay.html'; // Navigate to payment page
+});
+
+document.getElementById('proceed-to-payment').addEventListener('click', function() {
+    // Redirect to the payment page
+    window.location.href = 'pay.html';
+});
+
+
+// Function to load a JavaScript file dynamically
+function loadScript(src, callback) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+
+
+
