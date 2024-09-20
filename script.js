@@ -1,9 +1,10 @@
+
 const books = [
     "Let The Snog Fest Begin",
     "The Captains Treasure",
     "Lizzie of Langley Street",
     "The Goose Girl",
-    "Murder at the happy home for the Aged",
+    "Murder at the Happy Home for the Aged",
     "Treasure Island",
     "Pilgrimage",
     "Catherin Cookson",
@@ -29,6 +30,7 @@ const books = [
 const searchBox = document.getElementById('search-box');
 const suggestionsList = document.getElementById('suggestions');
 
+// Event listener for input in search box
 searchBox.addEventListener('input', function() {
     const query = searchBox.value.toLowerCase();
     const suggestions = books.filter(book => book.toLowerCase().includes(query));
@@ -59,17 +61,10 @@ document.addEventListener('click', function(event) {
 });
 
 function toggleLike(heartIcon) {
-    // Log the current heart state
-    console.log("Heart clicked", heartIcon);
-
-    // Toggle the 'liked' class
     heartIcon.classList.toggle('liked');
-    console.log("Liked class added?", heartIcon.classList.contains('liked'));
-
-    // Like count logic
     let likeCountElement = heartIcon.nextElementSibling;
     let currentCount = parseInt(likeCountElement.innerText);
-    
+
     if (heartIcon.classList.contains('liked')) {
         likeCountElement.innerText = currentCount + 1;
     } else {
@@ -311,5 +306,4 @@ const loginBtn = document.getElementById('login-btn');
 loginBtn.addEventListener('click', () => {
     loginForm.style.display = 'block'; // Show login form
 });
-
 

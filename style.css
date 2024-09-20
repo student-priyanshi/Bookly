@@ -524,7 +524,7 @@ body {
 
 .featured-slider {
     width: 100rem;
-    height: 550px; /* Adjust heigas needed */
+    height: 450px; /* Adjust heigas needed */
 }
 
 .featured .featured-slider .box{
@@ -667,7 +667,7 @@ body {
 
 .arrivals-slider {
     width: 100rem;
-    height: 500px; /* Adjust heigas needed */
+    height: 450px; /* Adjust heigas needed */
 }
 
 .arrivals  .arrivals-slider .box{
